@@ -5,7 +5,8 @@ using UnityEngine;
 public class F : MonoBehaviour
 {
     
-    const float G = 6.67430f;
+    public static float G = 6.67430f;
+    public static float F_;
     public static List<F> ATTRACTORS;
     //CENTER CAN BE KINEMATIC
     public Rigidbody rb;
@@ -39,6 +40,7 @@ public class F : MonoBehaviour
         if (DISTANCE == 0f) { return; }
 
         float FORCE_MAGNITUDE = (G * (rb.mass * PHYSIC_OBJECT_TO_ATTRACT.mass) / Mathf.Pow(DISTANCE, 2));
+        F_ = FORCE_MAGNITUDE;
         Vector3 FORCE = DIRECTION.normalized * FORCE_MAGNITUDE;
 
         PHYSIC_OBJECT_TO_ATTRACT.AddForce(FORCE);
