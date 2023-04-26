@@ -7,10 +7,9 @@ public class ThrowingIntoOrbit : MonoBehaviour
 
     public float TIME;
     public float IF_TIME;
-
     public Vector3 POSITION;
-
     public Transform ELEMENT;
+
     private bool DID = false;
 
 
@@ -23,13 +22,7 @@ public class ThrowingIntoOrbit : MonoBehaviour
             ELEMENT.position += POSITION;
             TIME = 0;
             DID = true;
-        }else
-        {
-
-            TIME += 1 * Time.deltaTime;
-        }
-
+        }else { TIME += 1 * Time.deltaTime; }
         if(DID) { TIME = 0f; }
     }
-
 }
