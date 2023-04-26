@@ -7,6 +7,7 @@ public class F : MonoBehaviour
     
     const float G = 6.67430f;
     public static List<F> ATTRACTORS;
+    //CENTER CAN BE KINEMATIC
     public Rigidbody rb;
 
 
