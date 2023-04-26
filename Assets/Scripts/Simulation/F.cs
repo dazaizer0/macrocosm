@@ -5,10 +5,7 @@ using UnityEngine;
 public class F : MonoBehaviour
 {
     
-
-    [Header("Gravity")]
     const float G = 6.67430f;
-
     public static List<F> ATTRACTORS;
     public Rigidbody rb;
 
@@ -19,17 +16,14 @@ public class F : MonoBehaviour
         foreach(F ATTRACTOR in ATTRACTORS)
         {
 
-            if(ATTRACTOR != this)
-                Attract(ATTRACTOR);
+            if(ATTRACTOR != this) { Attract(ATTRACTOR); }
         }
     }
 
     void OnEnable()
     {
         
-        if(ATTRACTORS == null)
-            ATTRACTORS = new List<F>();
-
+        if(ATTRACTORS == null) { ATTRACTORS = new List<F>(); }
         ATTRACTORS.Add(this);
     }
 
@@ -42,7 +36,7 @@ public class F : MonoBehaviour
 
         if (DISTANCE == 0f) { return; }
 
-        float FORCE_MAGNITUDE = G * (rb.mass * rb_TO_ATTRACT.mass) / Mathf.Pow(DISTANCE, 2);
+        float FORCE_MAGNITUDE = (G * (rb.mass * rb_TO_ATTRACT.mass) / Mathf.Pow(DISTANCE, 2));
         Vector3 FORCE = DIRECTION.normalized * FORCE_MAGNITUDE;
 
         rb_TO_ATTRACT.AddForce(FORCE);

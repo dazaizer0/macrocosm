@@ -28,6 +28,8 @@ public class ThrowingIntoOrbit : MonoBehaviour
 
             TIME += 1 * Time.deltaTime;
         }
+
+        if(DID) { TIME = 0f; }
     }
 
 }
