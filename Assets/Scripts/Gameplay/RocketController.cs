@@ -30,35 +30,30 @@ public class RocketController : MonoBehaviour
             Debug.Log("Down");
         
         if(Input.GetKey(KeyCode.D))
-            z_force -= 0.01f;
+            z_force -= 0.01f / 2;
             Debug.Log("Right");
-
         if(Input.GetKey(KeyCode.A))
-            z_force += 0.01f;
+            z_force += 0.01f / 2;
             Debug.Log("Left");
 
          if(Input.GetKey(KeyCode.W))
-            x_force += 0.01f;
+            x_force += 0.01f / 2;
             Debug.Log("Right");
-
         if(Input.GetKey(KeyCode.S))
-            x_force -= 0.01f;
+            x_force -= 0.01f / 2;
             Debug.Log("Left");
 
     }
 
     void FixedUpdate()
     {
-    
-        Vector3 force_vector = new Vector3(top.position.x, force + top.position.y, top.position.z);
 
         transform.Rotate(x_force, 0f, z_force);
 
         if(force > 0)
-            // rb.velocity = (force_vector + top.position) * Time.deltaTime;
-            rb.AddForce(force_vector, ForceMode.Acceleration);
+            rb.velocity = top.position * force * Time.deltaTime;
         else if(force < 0 && force > -29)
-            rb.velocity = -(force_vector + top.position) * Time.deltaTime;
+            rb.velocity = -(top.position * force) * Time.deltaTime;
 
         else
             rb.velocity = rb.velocity;
