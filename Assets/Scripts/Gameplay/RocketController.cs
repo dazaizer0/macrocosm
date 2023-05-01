@@ -23,10 +23,10 @@ public class RocketController : MonoBehaviour
     {
         
         if(Input.GetKey(KeyCode.UpArrow))
-            force += 0.05f;
+            force += 0.01f;
             Debug.Log("Up");
         if(Input.GetKey(KeyCode.DownArrow))
-            force -= 0.05f;
+            force -= 0.01f;
             Debug.Log("Down");
         
         if(Input.GetKey(KeyCode.D))
@@ -55,9 +55,11 @@ public class RocketController : MonoBehaviour
         transform.Rotate(x_force, 0f, z_force);
 
         if(force > 0)
-            rb.velocity = (force_vector + top.position) * Time.deltaTime;
+            // rb.velocity = (force_vector + top.position) * Time.deltaTime;
+            rb.AddForce(force_vector, ForceMode.Acceleration);
         else if(force < 0 && force > -29)
             rb.velocity = -(force_vector + top.position) * Time.deltaTime;
+
         else
             rb.velocity = rb.velocity;
         
