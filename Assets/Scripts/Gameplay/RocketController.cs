@@ -43,6 +43,9 @@ public class RocketController : MonoBehaviour
             x_force -= 0.01f / 2;
             Debug.Log("Left");
 
+        if(Input.GetKey(KeyCode.Z))
+            force = 0;
+            Debug.Log("ZERO");
     }
 
     void FixedUpdate()
